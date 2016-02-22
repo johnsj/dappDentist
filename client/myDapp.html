@@ -22,7 +22,8 @@
 
 <template name="accountDetails">
     <div class="">
-        <img src="{{identicon address}}" alt="">{{name}}:{{dapp_formatBalance balance "0,0.00[0000]" "ether"}}
+        {{> dapp_identicon identity=address class="dapp-small"}}
+        {{name}}:{{dapp_formatBalance balance "0,0.00[0000]" "ether"}}
         <br>
         Token Balance:{{TemplateVar.get "currentTokenBalance"}}
     </div>
