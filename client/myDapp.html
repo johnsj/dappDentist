@@ -5,10 +5,25 @@
 <body>
   <h1>Welcome to Meteor!</h1>
 
-  {{> hello}}
+  {{> accounts}}
 </body>
 
 <template name="hello">
   <button>Click Me</button>
   <p>You've pressed the button {{counter}} times.</p>
+</template>
+
+<template name="accounts">
+    <h4>Test - Lastest block: {{latestBlock.number}}</h4>
+    {{#each listAccounts}}
+        {{> accountDetails}}
+    {{/each}}
+</template>
+
+<template name="accountDetails">
+    <div class="">
+        <img src="{{identicon address}}" alt="">{{name}}:{{dapp_formatBalance balance "0,0.00[0000]" "ether"}}
+        <br>
+        Token Balance:{{TemplateVar.get "currentTokenBalance"}}
+    </div>
 </template>
