@@ -15,6 +15,7 @@
 
 <template name="accounts">
     {{> dapp_selectAccount accounts=listAccounts}}
+    Current address: {{TemplateVar.getFrom '.dapp-select-account' 'value'}}
     <hr>
     <h4>Test - Lastest block: {{latestBlock.number}}</h4>
     {{#each listAccounts}}
