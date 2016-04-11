@@ -2,3 +2,8 @@
 .tooth{
   opacity: 0;
 }
+
+.tooth-fill{
+  opacity: 0.3 !important;
+  fill: red;
+}
