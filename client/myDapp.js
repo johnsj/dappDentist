@@ -26,6 +26,10 @@ Template.dentition.events({
       if (_.contains(e.target.classList, className)){
         e.target.classList.remove(className);
       } else {
+        var allClasses = ['tooth-fill', 'tooth-missing'];
+        _.each(allClasses, function(klass) {
+          e.target.classList.remove(klass);
+        })
         e.target.classList.add(className);
       };
 
