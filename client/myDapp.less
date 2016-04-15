@@ -23,7 +23,16 @@ header, main, footer {
   opacity: 0;
 }
 
-.tooth-fill{
+.tooth-overlay {
   opacity: 0.3 !important;
+}
+
+.tooth-fill{
+  .tooth-overlay();
   fill: red;
+}
+
+.tooth-missing{
+  .tooth-overlay();
+  fill: black;
 }

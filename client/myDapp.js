@@ -21,36 +21,29 @@
 
 Template.dentition.events({
   'click .tooth': function(e) {
-    if (_.contains(e.target.classList, 'tooth-fill')){
-      e.target.classList.remove('tooth-fill');
-    } else {
-      e.target.classList.add('tooth-fill');
+
+    var toggleClass = function(className) {
+      if (_.contains(e.target.classList, className)){
+        e.target.classList.remove(className);
+      } else {
+        e.target.classList.add(className);
+      };
+
+      $.contextMenu( 'destroy', '.tooth');
     }
+
+    $.contextMenu({
+        selector: '.tooth',
+        trigger: 'left',
+        items: {
+            "tooth-fill": {name: "Tooth Fill", callback: function(key, options) {
+              toggleClass('tooth-fill');
+            }}
+            ,"tooth-missing": {name: "Tooth Missing", callback: function (key, options) {
+              toggleClass('tooth-missing');
+            }}
+        }
+    });
+
   }
 });
-
-
-$(function() {
-     $.contextMenu({
-         selector: '.tooth',
-         callback: function(key, options) {
-             var m = "clicked: " + key;
-             window.console && console.log(m) || alert(m);
-         },
-         items: {
-             "edit": {name: "Edit", icon: "edit"},
-             "cut": {name: "Cut", icon: "cut"},
-            copy: {name: "Copy", icon: "copy"},
-             "paste": {name: "Paste", icon: "paste"},
-             "delete": {name: "Delete", icon: "delete"},
-             "sep1": "---------",
-             "quit": {name: "Quit", icon: function(){
-                 return 'context-menu-icon context-menu-icon-quit';
-             }}
-         }
-     });
-
-     $('.context-menu-one').on('click', function(e){
-         console.log('clicked', this);
-     })
- });
