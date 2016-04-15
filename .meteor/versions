@@ -1,5 +1,6 @@
 3stack:bignumber@2.0.0
 alexvandesande:identicon@2.0.2
+alisalaah:jquery-contextmenu@1.6.6
 amplify@1.0.0
 autopublish@1.0.4
 autoupdate@1.2.4
@@ -50,6 +51,7 @@ less@2.5.1
 livedata@1.0.15
 localstorage@1.0.5
 logging@1.0.8
+materialize:materialize@0.97.5
 meteor@1.1.10
 meteor-base@1.0.1
 minifiers@1.1.7

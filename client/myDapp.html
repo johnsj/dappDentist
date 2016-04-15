@@ -3,17 +3,50 @@
 </head>
 
 <body>
-  <h1>Welcome to Meteor!</h1>
-  {{> dentition}}
-  <!-- {{> accounts}} -->
+
+  <header>
+    <nav class="top-nav" role="navigation">
+      <div class="container">
+        <a href="#" id="logo-container" class="brand-logo">dappDentist</a>
+      </div>
+    </nav>
+    <ul class="side-nav fixed" style="transform: translateX(0px)">
+      <li class="logo"></li>
+      <li class="brandname">dappDentist</li>
+    </ul>
+  </header>
+
+  <main>
+    <div class="container">
+      <div class="row">
+        <div class="col s12">
+          {{>dentition}}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s12 m9 l10">
+          <div class="section">
+            <div class="row">
+              <div class="col s12">
+                <ul class="collection">
+                  <li class="collection-item">First comment</li>
+                  <li class="collection-item">Second comment</li>
+                  <li class="collection-item">Third comment</li>
+                  <li class="collection-item">Fourth comment</li>
+                  <li class="collection-item">Fifth comment</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+
 </body>
 
-<template name="hello">
-  <button>Click Me</button>
-  <p>You've pressed the button {{counter}} times.</p>
-</template>
-
-<template name="accounts">
+<!-- <template name="accounts">
     {{> dapp_selectAccount accounts=listAccounts}}
     Current address: {{TemplateVar.getFrom '.dapp-select-account' 'value'}}
     <hr>
@@ -30,4 +63,4 @@
         <br>
         Token Balance:{{TemplateVar.get "currentTokenBalance"}}
     </div>
-</template>
+</template> -->
