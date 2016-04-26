@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "classnames": "^2.2.4",
     "ipfs-api": "^3.0.2",
+    "ipfs-js": "0.0.9",
     "meteor-node-stubs": "^0.2.3"
   },
   "devDependencies": {},

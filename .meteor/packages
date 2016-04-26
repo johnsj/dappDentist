@@ -31,3 +31,5 @@ frozeman:persistent-minimongo2
 
 standard-minifier-css
 standard-minifier-js
+
+reactive-dict

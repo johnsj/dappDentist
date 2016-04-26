@@ -1,22 +1,27 @@
 <template name="PatientCard">
   <div class="card">
     <div class="card-content">
-      <span class="card-title">Card Title</span>
-      <img src="patient.jpg" alt="" class="responsive-img circle">
+      <div class="center">
+        <img src="patient.jpg" alt="" class="responsive-img circle">
+      </div>
+      <span class="card-title">John Schwartz Jacobsen</span>
       <ul class="collection">
-        <li class="collection-item">
-          <span class="title">Patient Name:</span>
-          <p>John Schwartz Jacobsen</p>
-        </li>
         <li class="collection-item">
           <span class="title">Age:</span>
           <p>29</p>
         </li>
+        <li class="collection-item">
+          <span class="title">Address:</span>
+          <p>Borgmester Fischersvej 6, 7.tv, DK-2000 Frederiksberg</p>
+        </li>
       </ul>
     </div>
     <div class="card-action">
-      <a href="#">This is a link</a>
-      <a href="#">This is a link</a>
+      <div class="row">
+        <div class="col center s12 btn-complete-visit btn-flat white-text {{visitCSSClass}}">
+          Records Syncronized
+        </div>
+      </div>
     </div>
   </div>
 </template>
