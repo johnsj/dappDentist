@@ -1,38 +1,43 @@
 
 /* CSS declarations go here */
 
-html, body {
-    height: 100%;
-}
-
 header, main, footer {
   padding-left: 240px;
 }
 
-.container{
-  margin: 0 auto;
+@media only screen and (max-width : 992px) {
+  header, main, footer {
+    padding-left: 0;
+  }
+}
+ul.side-nav{
+  li{
+    padding: 0;
+  }
+}
 
-  width: 85%;
+.svg-container{
+  background-image: url('/teeth5.png');
+  background-size: contain;
+  .tooth{
+    opacity: 0;
+  }
+
+  .tooth-overlay {
+    opacity: 0.3 !important;
+  }
+
+  .tooth-fill{
+    .tooth-overlay();
+    fill: red;
+  }
+
+  .tooth-missing{
+    .tooth-overlay();
+    fill: black;
+  }
 }
 
 .collection{
   padding: 0px;
-}
-
-.tooth{
-  opacity: 0;
-}
-
-.tooth-overlay {
-  opacity: 0.3 !important;
-}
-
-.tooth-fill{
-  .tooth-overlay();
-  fill: red;
-}
-
-.tooth-missing{
-  .tooth-overlay();
-  fill: black;
 }
