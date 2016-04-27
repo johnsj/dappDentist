@@ -1,0 +1,8 @@
+{
+  "public":{
+
+  },
+  "private":{
+    "uploadPath": "C:\\path\\to\\upload\\folder"
+  }
+}

@@ -1,4 +1,4 @@
-var imageStore = new FS.Store.FileSystem("images", {path: "C:\\Users\\john_\\Documents\\Development\\Ethereum\\dappDentist\\uploads"});
+var imageStore = new FS.Store.FileSystem("images", {path: Meteor.settings.private.uploadPath});
 
 Images = new FS.Collection("images", {
   stores: [imageStore]
