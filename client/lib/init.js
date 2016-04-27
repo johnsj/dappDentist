@@ -6,9 +6,11 @@ if(typeof web3 === 'undefined')
 EthBlocks.init();
 EthAccounts.init();
 
-window.ipfs = ipfsAPI;
-window.ipfs.setProvider();
+ipfs = ipfsAPI;
+ipfs.setProvider();
 
 $(document).ready(function() {
   $(".button-collapse").sideNav();
 })
+
+BlazeLayout.setRoot('body');
