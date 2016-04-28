@@ -1,0 +1,17 @@
+<template name="dentalFileList">
+  <div class="row">
+    {{#each imageList}}
+      <div class="col s4">
+        <div class="card">
+            <div class="card-image">
+              <img src="{{this.url}}">
+              <span class="card-title">{{this.name}}</span>
+            </div>
+            <div class="card-action">
+              <a href="#" class="removeImage red-text">Remove Image</a>
+            </div>
+          </div>
+      </div>
+    {{/each}}
+  </div>
+</template>

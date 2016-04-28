@@ -1,9 +1,5 @@
 import { Template } from 'meteor/templating';
 
-Images = new FS.Collection("images", {
-  stores: [new FS.Store.FileSystem("images", {path: "/uploads/"})]
-});
-
 Template.dentalFileUpload.events({
   'change .fileUpload': function(event, template) {
     console.log(Images);

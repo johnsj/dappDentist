@@ -6,6 +6,6 @@ FlowRouter.route('/', {
 
 FlowRouter.route('/upload', {
     action: function() {
-        BlazeLayout.render("mainLayout",{main: 'dentalFileUpload'});
+        BlazeLayout.render("mainLayout",{main: 'fileUploadLayout'});
     }
 });
