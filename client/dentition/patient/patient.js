@@ -6,6 +6,8 @@ import classnames from 'classnames';
 Template.PatientCard.onCreated(function() {
   this.state = new ReactiveDict();
   this.state.set('visitComplete', false);
+
+
 });
 
 Template.PatientCard.helpers({
@@ -27,6 +29,10 @@ Template.PatientCard.events({
   'click .btn-complete-visit'(event, instance) {
     event.preventDefault();
     instance.state.set('visitComplete',!instance.state.get('visitComplete'));
-    
+    ipfs.cat("Qmc7CrwGJvRyCYZZU64aPawPj7CJ56vyBxdhxa38Dh1aKt", function(err, buffer) {
+      if (err) console.log(err);
+        console.log(buffer.toString());     // "Testing..."
+      });
+
   }
 });

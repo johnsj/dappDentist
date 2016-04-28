@@ -9,3 +9,9 @@ FlowRouter.route('/upload', {
         BlazeLayout.render("mainLayout",{main: 'fileUploadLayout'});
     }
 });
+
+FlowRouter.route('/search', {
+    action: function() {
+        BlazeLayout.render("mainLayout",{main: 'patientsLayout'});
+    }
+});
