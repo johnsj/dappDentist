@@ -1,3 +1,5 @@
+import { Template } from 'meteor/templating';
+
 Images = new FS.Collection("images", {
   stores: [new FS.Store.FileSystem("images", {path: "/uploads/"})]
 });

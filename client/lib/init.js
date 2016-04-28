@@ -9,8 +9,4 @@ EthAccounts.init();
 ipfs = ipfsAPI;
 ipfs.setProvider();
 
-$(document).ready(function() {
-  $(".button-collapse").sideNav();
-})
-
 BlazeLayout.setRoot('body');

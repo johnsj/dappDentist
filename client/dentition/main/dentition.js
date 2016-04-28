@@ -1,23 +1,4 @@
-
-// Template.accounts.helpers({
-//     listAccounts: function () {
-//         return EthAccounts.find().fetch();
-//     },
-//     latestBlock: function () {
-//         return EthBlocks.latest
-//     }
-// });
-//
-//
-// Template.accountDetails.onRendered(function () {
-//     var template = Template.instance();
-//     var tokenInstance = TokenContract.at("0x938564f4736b18064d4e03ed2da235380ae48890");
-//     var templateAddress = Template.currentData().address;
-//
-//     tokenInstance.coinBalanceOf(templateAddress, function (err, balance) {
-//         TemplateVar.set(template, "currentTokenBalance", balance);
-//     });
-// });
+import { Template } from 'meteor/templating';
 
 Template.dentition.events({
   'click .tooth': function(e) {

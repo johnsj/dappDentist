@@ -27,13 +27,6 @@ Template.PatientCard.events({
   'click .btn-complete-visit'(event, instance) {
     event.preventDefault();
     instance.state.set('visitComplete',!instance.state.get('visitComplete'));
-    // console.log(ipfs);
-    ipfs.api.id(function(err,res){
-      if (err) {
-        console.log(err);
-        return
-      };
-      console.log(res);
-    });
+    
   }
 });
