@@ -1,17 +1,22 @@
+import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 import { $ } from 'meteor/jquery';
 
 import { Dentitions } from '../../../collections/dentitions.js';
 
 Template.dentition.onRendered(function () {
+  console.log('onRendered');
   let teeth = Dentitions.find({
     patient_id: 'TESTPATIENT'
-  }).forEach(function (tooth) {
-    console.log(tooth);
+  });
+  Meteor.setTimeout(function() {
+    teeth.forEach(function (tooth) {
+      console.log(tooth);
 
-    document.getElementById(tooth.tooth).classList.add(tooth.status);
+      document.getElementById(tooth.tooth).classList.add(tooth.status);
 
-  })
+    });
+  }, 100);
 });
 
 Template.dentition.events({
