@@ -1,3 +1,4 @@
+import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 import { ReactiveDict } from 'meteor/reactive-dict';
 
@@ -33,6 +34,10 @@ Template.PatientCard.events({
     //   if (err) console.log(err);
     //   console.log(buffer.toString());     // "Testing..."
     // });
-
+    Meteor.call('testExport', function (err, res) {
+      if (!err) {
+        console.log(res);
+      }
+    });
   }
 });

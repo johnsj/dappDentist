@@ -5,16 +5,12 @@ import { $ } from 'meteor/jquery';
 import { Dentitions } from '../../../collections/dentitions.js';
 
 Template.dentition.onRendered(function () {
-  console.log('onRendered');
   let teeth = Dentitions.find({
     patient_id: 'TESTPATIENT'
   });
   Meteor.setTimeout(function() {
     teeth.forEach(function (tooth) {
-      console.log(tooth);
-
       document.getElementById(tooth.tooth).classList.add(tooth.status);
-
     });
   }, 100);
 });
