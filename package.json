@@ -6,7 +6,10 @@
   "dependencies": {
     "classnames": "^2.2.4",
     "ipfs-js": "0.0.9",
-    "meteor-node-stubs": "^0.2.3"
+    "json2xml": "^0.1.2",
+    "jszip": "^3.0.0",
+    "meteor-node-stubs": "^0.2.3",
+    "path": "^0.12.7"
   },
   "devDependencies": {},
   "scripts": {
