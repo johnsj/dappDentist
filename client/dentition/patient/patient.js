@@ -34,7 +34,7 @@ Template.PatientCard.events({
     //   if (err) console.log(err);
     //   console.log(buffer.toString());     // "Testing..."
     // });
-    Meteor.call('testExport', function (err, res) {
+    Meteor.call('testZip', function (err, res) {
       if (!err) {
         console.log(res);
       }
