@@ -5,8 +5,9 @@ import { $ } from 'meteor/jquery';
 import { Dentitions } from '../../../collections/dentitions.js';
 
 Template.dentition.onRendered(function () {
+  let patient_id = FlowRouter.getParam('patient_id');
   let teeth = Dentitions.find({
-    patient_id: 'TESTPATIENT'
+    patient_id: patient_id
   });
   Meteor.setTimeout(function() {
     teeth.forEach(function (tooth) {
@@ -15,14 +16,18 @@ Template.dentition.onRendered(function () {
   }, 100);
 });
 
+
+
 Template.dentition.events({
   'click .tooth': function(e) {
+
+    let patient_id = FlowRouter.getParam('patient_id');
 
     var toggleClass = function(className) {
       if (_.contains(e.target.classList, className)){
 
         let checkId = Dentitions.findOne({
-          patient_id: "TESTPATIENT",
+          patient_id: patient_id,
           tooth: e.target.id});
 
         Dentitions.remove({
@@ -37,7 +42,7 @@ Template.dentition.events({
         })
 
         let checkId = Dentitions.findOne({
-          patient_id: "TESTPATIENT",
+          patient_id: patient_id,
           tooth: e.target.id});
 
         if (checkId != null){
@@ -48,7 +53,7 @@ Template.dentition.events({
             });
         } else {
           Dentitions.insert({
-            patient_id: "TESTPATIENT",
+            patient_id: patient_id,
             tooth: e.target.id,
             status: className
             }

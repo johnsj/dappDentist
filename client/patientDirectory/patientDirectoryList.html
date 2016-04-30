@@ -1,0 +1,76 @@
+<template name="patientDirectory">
+  {{> patientDirectorySearch}}
+  {{> addPatientModal}}
+  <div class="row">
+    <div class="col s12">
+      <table class="striped">
+        <thead>
+          <tr>
+            <th>Patient ID</th>
+            <th>Patient Name</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each patients}}
+            {{> patientDirectoryListSingle}}
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</template>
+
+<template name="addPatientModal">
+  <!-- Modal Trigger -->
+  <div class="row">
+    <div class="col s12">
+      <a class="btn-floating btn-large waves-effect waves-light red modal-trigger" href="#modal1"><i class="material-icons">add</i></a>
+    </div>
+  </div>
+
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal">
+    <form id="addPatientForm">
+      <div class="modal-content">
+        <h4>Add Patient</h4>
+        <div class="row">
+          <div class="col s6 input-field">
+            <input type="text" id="first_name" class="validate">
+            <label for="first_name">First name</label>
+          </div>
+          <div class="col s6 input-field">
+            <input type="text" id="last_name" class="validate">
+            <label for="last_name">Last name</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s12 input-field">
+            <input type="text" id="patient_hash" class="validate">
+            <label for="patient_hash">Patient Hash/Eth-Address</label>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <input type="submit" name="name" class="btn" value="Add Patient">
+      </div>
+  </form>
+  </div>
+</template>
+
+<template name="patientDirectoryListSingle">
+  <tr class="patient_row">
+    <td>{{patient_id}}</td>
+    <td>{{first_name}} {{last_name}}</td>
+  </tr>
+</template>
+
+<template name="patientDirectorySearch">
+  <div class="row">
+    <div class="col s12">
+      <div class="search-wrapper card">
+        <input type="text">
+        <i class="material-icons">search</i>
+      </div>
+    </div>
+  </div>
+</template>

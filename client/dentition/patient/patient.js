@@ -1,14 +1,13 @@
 import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 import { ReactiveDict } from 'meteor/reactive-dict';
+import { Patients } from '../../../collections/patients.js';
 
 import classnames from 'classnames';
 
 Template.PatientCard.onCreated(function() {
   this.state = new ReactiveDict();
   this.state.set('visitComplete', false);
-
-
 });
 
 Template.PatientCard.helpers({
@@ -23,6 +22,9 @@ Template.PatientCard.helpers({
     })
 
     return classname;
+  },
+  patient(){
+    return Patients.findOne({patient_id: FlowRouter.getParam('patient_id')});
   }
 });
 
