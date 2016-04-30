@@ -1,14 +1,26 @@
 import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
+import { Session } from 'meteor/session';
 import { Patients } from '../../collections/patients.js';
 import { $ } from 'meteor/jquery';
 
 Template.patientDirectory.onRendered(function () {
   $('.modal-trigger').leanModal();
+  Session.set('patientSearchQuery', null);
 })
 
 Template.patientDirectory.helpers({
   patients(){
+    console.log(Session.get('patientSearchQuery'));
+    if (Session.get('patientSearchQuery') !== null) {
+      return Patients.find({
+        $or:[
+          {first_name: {$regex: Session.get('patientSearchQuery'), $options:'i'}},
+          {last_name: {$regex: Session.get('patientSearchQuery'), $options:'i'}},
+          {patient_id: {$regex: Session.get('patientSearchQuery'), $options:'i'}}
+        ]
+      });
+    }
     return Patients.find();
   }
 })
@@ -34,5 +46,16 @@ Template.patientDirectoryListSingle.events({
   'dblclick .patient_row'(event, instance){
     let patient_id = this.patient_id;
     FlowRouter.go('/patientdirectory/'+patient_id);
+  }
+});
+
+Template.patientDirectorySearch.events({
+  'submit #patientSearchForm'(event, template){
+    event.preventDefault();
+    let query = template.find('#patientSearchInput').value;
+    if (query == "") {
+      Session.set('patientSearchQuery', null);
+    }
+    Session.set('patientSearchQuery', query);
   }
 });
