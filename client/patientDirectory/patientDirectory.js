@@ -14,9 +14,9 @@ Template.patientDirectory.helpers({
     if (Session.get('patientSearchQuery') !== null) {
       return Patients.find({
         $or:[
-          {first_name: {$regex: Session.get('patientSearchQuery'), $options:'i'}},
-          {last_name: {$regex: Session.get('patientSearchQuery'), $options:'i'}},
-          {patient_id: {$regex: Session.get('patientSearchQuery'), $options:'i'}}
+          {first_name: {$regex: Session.get('patientSearchQuery').toString(), $options:'i'}},
+          {last_name: {$regex: Session.get('patientSearchQuery').toString(), $options:'i'}},
+          {patient_id: {$regex: Session.get('patientSearchQuery').toString(), $options:'i'}}
         ]
       });
     }
