@@ -1,6 +1,9 @@
 // Based on the article from:
 // https://themeteorchef.com/recipes/exporting-data-from-your-meteor-application/
 
+// TODO
+// add image files to zip
+
 import { Meteor } from 'meteor/meteor';
 import json2xml from 'json2xml';
 import jsZip from 'jszip';
