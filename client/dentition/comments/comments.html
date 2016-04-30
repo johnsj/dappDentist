@@ -1,24 +1,35 @@
 <template name="Comments">
+  {{> CommentsForm}}
   <ul class="collection">
-    <li class="collection-item avatar">
-      <img src="/patient2.jpg" alt="" class="circle">
-      <span class="title">Title</span>
-      <p>Medical comments</p>
-    </li>
-    <li class="collection-item avatar">
-      <i class="material-icons circle">folder</i>
-      <span class="title">Title</span>
-      <p>Medical comments</p>
-    </li>
-    <li class="collection-item avatar">
-      <i class="material-icons circle green">insert_chart</i>
-      <span class="title">Title</span>
-      <p>Medical comments</p>
-    </li>
-    <li class="collection-item avatar">
-      <i class="material-icons circle red">play_arrow</i>
-      <span class="title">Title</span>
-      <p>Medical comments</p>
-    </li>
+    {{#each comments}}
+      {{> CommentsSingle}}
+    {{/each}}
   </ul>
+</template>
+
+<template name="CommentsSingle">
+  <li class="collection-item avatar">
+    <i class="material-icons circle red">person</i>
+    <span class="title">{{doctor}} - {{date}}</span>
+    <p>{{text}}</p>
+  </li>
+</template>
+
+<template name="CommentsForm">
+  <div class="row card">
+    <form id="journalForm" class="col s12">
+      <div class="row">
+        <div class="input-field col s12">
+          <i class="material-icons prefix">mode_edit</i>
+          <textarea id="journalText" class="materialize-textarea"></textarea>
+          <label for="journalText">Journal Entry</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s12">
+          <input type="submit" class="btn right" value="Upload Journal Entry">
+        </div>
+      </div>
+    </form>
+  </div>
 </template>
