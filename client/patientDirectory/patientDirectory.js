@@ -11,7 +11,6 @@ Template.patientDirectory.onRendered(function () {
 
 Template.patientDirectory.helpers({
   patients(){
-    console.log(Session.get('patientSearchQuery'));
     if (Session.get('patientSearchQuery') !== null) {
       return Patients.find({
         $or:[
