@@ -1,7 +1,12 @@
 <template name="Navigation">
   <nav class="top-nav" role="navigation">
-    <div class="container">
+    <div class="nav-wrapper">
       <a href="#" id="logo-container" class="brand-logo">dappDentist</a>
+      <ul class="right">
+        <li>
+          {{> loginButtons align="right"}}
+        </li>
+      </ul>
     </div>
     {{>SideNav}}
   </nav>

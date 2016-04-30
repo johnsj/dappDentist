@@ -1,5 +1,8 @@
 3stack:bignumber@2.0.7
 accounts-base@1.2.7
+accounts-password@1.1.8
+accounts-ui@1.1.9
+accounts-ui-unstyled@1.1.12
 alexvandesande:identicon@2.0.2
 alisalaah:jquery-contextmenu@1.6.6
 allow-deny@1.0.4
@@ -109,6 +112,7 @@ mongo-id@1.0.4
 mongo-livedata@1.0.12
 msavin:jetsetter@1.5.2
 msavin:mongol@1.6.2
+npm-bcrypt@0.8.5
 npm-mongo@1.4.43
 observe-sequence@1.0.11
 ordered-dict@1.0.7
@@ -123,8 +127,10 @@ retry@1.0.7
 routepolicy@1.0.10
 service-configuration@1.0.9
 session@1.1.5
+sha@1.0.7
 spacebars@1.0.11
 spacebars-compiler@1.0.11
+srp@1.0.8
 standard-minifier-css@1.0.6
 standard-minifier-js@1.0.6
 standard-minifiers@1.0.6

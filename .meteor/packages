@@ -40,3 +40,6 @@ cfs:standard-packages
 cfs:filesystem
 
 meteortoys:allthings
+
+accounts-password
+accounts-ui
