@@ -1,10 +1,11 @@
 FlowRouter.route('/', {
     action: function() {
-        BlazeLayout.render("mainLayout",{main: 'dentalLayout'});
+        // BlazeLayout.render("mainLayout",{main: 'dentalLayout'});
+        FlowRouter.go('/patientdirectory');
     }
 });
 
-FlowRouter.route('/upload', {
+FlowRouter.route('/upload/:patient_id', {
     action: function() {
         BlazeLayout.render("mainLayout",{main: 'fileUploadLayout'});
     }

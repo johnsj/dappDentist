@@ -12,11 +12,14 @@ Template.patientDirectory.onRendered(function () {
 Template.patientDirectory.helpers({
   patients(){
     if (Session.get('patientSearchQuery') !== null) {
+
+      let query = (Session.get('patientSearchQuery')) ? Session.get('patientSearchQuery').toString() : '';
+
       return Patients.find({
         $or:[
-          {first_name: {$regex: Session.get('patientSearchQuery').toString(), $options:'i'}},
-          {last_name: {$regex: Session.get('patientSearchQuery').toString(), $options:'i'}},
-          {patient_id: {$regex: Session.get('patientSearchQuery').toString(), $options:'i'}}
+          {first_name: {$regex: query, $options:'i'}},
+          {last_name: {$regex: query, $options:'i'}},
+          {patient_id: {$regex: query, $options:'i'}}
         ]
       });
     }
