@@ -33,7 +33,7 @@ let _generateZipArchive = (archive) => {
 
   archive.generateAsync({type:'nodebuffer'})
     .then(function(contents) {
-      fs.writeFile("archives/out.zip", contents, function(err) {
+      fs.writeFile(process.env.PWD + "/archives/out.zip", contents, function(err) {
         if(!err){
           console.log('written');
         } else {
