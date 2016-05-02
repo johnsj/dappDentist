@@ -5,6 +5,7 @@ import jsZip from 'jszip';
 import fs from 'fs';
 import { Dentitions } from '../collections/dentitions.js';
 import { Comments } from '../collections/comments.js';
+import { Images } from '../collections/images.js';
 import { ipfsObj } from './ipfs/ipfs.js';
 
 let _initializeZipArchive = () => {
@@ -41,6 +42,12 @@ let _addDataToArchive = (archive, query) => {
   _prepareDataForArchive(archive, Dentitions, formattedQuery, "Dentitions"+query+".json");
   _prepareDataForArchive(archive, Comments, formattedQuery, "Comments"+query+".json");
   //TODO add images from collection as well
+  let images = Images.find({'metadata.patient_id':query}).fetch();
+  images.forEach((image)=>{
+    let imgContent = fs.readFileSync(process.env.PWD + '/uploads/' + image.copies.images.key);
+    _addFileToArchive(archive, image.original.name, imgContent);
+  });
+
 }
 
 let _generateZipArchive = (archive, query) => {
@@ -48,7 +55,7 @@ let _generateZipArchive = (archive, query) => {
     .then(function(contents) {
       fs.writeFile(process.env.PWD + "/archives/"+query+".zip", contents, function(err) {
         if(!err){
-          console.log('written');
+          console.log('Zip written to: ' + process.env.PWD + "/archives/"+query+".zip");
         } else {
           console.log(err);
         }
@@ -100,7 +107,7 @@ let distributeData = (query) => {
 //This is what the call should look like:
 let distributeToIPFS = (query) => {
   archiveData(query);
-  distributeData(query);
+  // distributeData(query);
 }
 
-// distributeToIPFS('TESTPATIENT');
+distributeToIPFS('TESTPATIENT');

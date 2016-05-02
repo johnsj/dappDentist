@@ -1,4 +1,5 @@
 import { Dentitions } from '../collections/dentitions.js';
+import { Images } from '../collections/images.js';
 
 Images.allow({
   'insert': function () {
