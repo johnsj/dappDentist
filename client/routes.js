@@ -28,3 +28,9 @@ FlowRouter.route('/patientdirectory/:patient_id', {
         BlazeLayout.render("mainLayout",{main: 'dentalLayout'});
     }
 });
+
+FlowRouter.route('/ethereum', {
+    action: function(params) {
+        BlazeLayout.render("mainLayout",{main: 'EthereumLayout'});
+    }
+});

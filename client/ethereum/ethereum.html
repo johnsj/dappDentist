@@ -1,0 +1,8 @@
+<template name="EthereumLayout">
+  {{> showCoinbase coinbase=coinbase}}
+</template>
+
+<template name="showCoinbase">
+  {{> dapp_identicon identity=coinbase class="dapp-small"}}
+  {{coinbase}}
+</template>
