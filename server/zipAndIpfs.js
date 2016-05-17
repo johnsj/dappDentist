@@ -8,6 +8,9 @@ import { Comments } from '../collections/comments.js';
 import { Images } from '../collections/images.js';
 import { ipfsObj } from './ipfs/ipfs.js';
 
+const archiveLocation = Meteor.absolutePath + '/archives/';
+const uploadLocation = Meteor.absolutePath + '/uploads/';
+
 let _initializeZipArchive = () => {
   return new jsZip();
 };
@@ -44,7 +47,7 @@ let _addDataToArchive = (archive, query) => {
   //TODO add images from collection as well
   let images = Images.find({'metadata.patient_id':query}).fetch();
   images.forEach((image)=>{
-    let imgContent = fs.readFileSync(process.env.PWD + '/uploads/' + image.copies.images.key);
+    let imgContent = fs.readFileSync(uploadLocation + image.copies.images.key);
     _addFileToArchive(archive, image.original.name, imgContent);
   });
 
@@ -53,9 +56,9 @@ let _addDataToArchive = (archive, query) => {
 let _generateZipArchive = (archive, query) => {
   archive.generateAsync({type:'nodebuffer'})
     .then(function(contents) {
-      fs.writeFile(process.env.PWD + "/archives/"+query+".zip", contents, function(err) {
+      fs.writeFile(archiveLocation + query + ".zip", contents, function(err) {
         if(!err){
-          console.log('Zip written to: ' + process.env.PWD + "/archives/"+query+".zip");
+          console.log('Zip written to: ' + archiveLocation + query + ".zip");
         } else {
           console.log(err);
         }
@@ -85,7 +88,7 @@ let distributeData = (query) => {
     //   }
     // });
 
-    fs.readFile(process.env.PWD + `/archives/${query}.zip`,(fsErr, fsData)=>{
+    fs.readFile(archiveLocation + `${query}.zip`,(fsErr, fsData)=>{
       if (!fsErr) {
 
         ipfsObj.api.add(fsData, (err, data)=>{
@@ -106,8 +109,8 @@ let distributeData = (query) => {
 
 //This is what the call should look like:
 let distributeToIPFS = (query) => {
-  archiveData(query);
-  // distributeData(query);
+  //archiveData(query);
+  //distributeData(query);
 }
 
 distributeToIPFS('TESTPATIENT');

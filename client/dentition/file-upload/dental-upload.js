@@ -1,4 +1,5 @@
 import { Template } from 'meteor/templating';
+import { Images } from '../../../collections/images.js';
 
 Template.dentalFileUpload.events({
   'change .fileUpload': function(event, template) {

@@ -13,8 +13,6 @@ Template.dentalFileList.helpers({
 
     let res = Images.find({'metadata.patient_id': patient_id}).fetch();
 
-    console.log(res);
-
     return res;
   }
 });
