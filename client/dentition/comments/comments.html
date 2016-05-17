@@ -11,13 +11,16 @@
   <li class="collection-item avatar">
     <i class="material-icons circle red">person</i>
     <span class="title">{{doctor}} - {{date}}</span>
-    <p>{{text}}</p>
+    <!-- This indentation is intentional -->
+    {{#markdown}}
+{{text}}
+    {{/markdown}}
   </li>
 </template>
 
 <template name="CommentsForm">
   <div class="row card">
-    <form id="journalForm" class="col s12">
+    <form id="journalForm" class="col s6">
       <div class="row">
         <div class="input-field col s12">
           <i class="material-icons prefix">mode_edit</i>
@@ -31,5 +34,13 @@
         </div>
       </div>
     </form>
+    <div class="col s6">
+      <div class="row">
+        <div class="col s12">
+          <h5>Comment preview</h5>
+          <div id="markdown-preview"></div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>

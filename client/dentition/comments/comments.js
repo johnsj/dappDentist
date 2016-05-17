@@ -2,6 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 import { $ } from 'meteor/jquery';
 import { Comments } from '../../../collections/comments.js';
+import { Showdown } from 'meteor/markdown';
 
 Template.CommentsList.helpers({
   comments(){
@@ -25,5 +26,10 @@ Template.CommentsForm.events({
 
     $('#journalText').val('');
     $('#journalText').trigger('autoresize');
+  },
+  'input #journalText'(events){
+    let converter =  new Showdown.converter();
+    let html = converter.makeHtml($('#journalText').val());
+    $('#markdown-preview').html(html);
   }
 })
