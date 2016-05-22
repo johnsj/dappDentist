@@ -1,10 +1,4 @@
-contract EHRdk{
-  event RecordsRequested(address sender, address patient);
-
-  function requestRecords(address patient){
-    RecordsRequested(msg.sender, patient);
-  }
-}
+//Current address to this contract: 0x4f4f415337569386ed9c7d10a61fe27aa636fe8a
 
 contract journalDb {
 
@@ -12,11 +6,11 @@ contract journalDb {
 
   mapping (address => string) journals;
 
-  function getJournal(address patient) {
-    if(journals[patient] != ""){
+  function getJournal(address patient) returns (string res){
+    if(patient != 0x0){
       return journals[patient];
     }
-    return false;
+    return "";
   }
 
   function updateJournal(address patient, string hash) {
