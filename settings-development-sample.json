@@ -3,6 +3,8 @@
 
   },
   "private":{
-    "uploadPath": "C:\\path\\to\\upload\\folder"
+    "coinbase": "0xb1584673ead731b16eb85d1fee037e8a8cc7a6df",
+    "contractAddress": "0xe2c3da52747506d9803810b96dbc012f308d22a0",
+    "contractABI": [{"constant":false,"inputs":[{"name":"patient","type":"address"}],"name":"getJournal","outputs":[{"name":"res","type":"bytes"}],"type":"function"},{"constant":false,"inputs":[{"name":"patient","type":"address"},{"name":"hash","type":"bytes"}],"name":"updateJournal","outputs":[{"name":"res","type":"bool"}],"type":"function"},{"constant":false,"inputs":[],"name":"remove","outputs":[],"type":"function"},{"inputs":[],"type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"name":"patient","type":"address"},{"indexed":true,"name":"hash","type":"bytes"}],"name":"journalUpdated","type":"event"}],
   }
 }

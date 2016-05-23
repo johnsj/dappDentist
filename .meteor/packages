@@ -49,3 +49,5 @@ akasha:meteor-ipfs
 ostrio:meteor-root
 
 markdown
+promise
+http
