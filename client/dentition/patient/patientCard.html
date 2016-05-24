@@ -1,11 +1,11 @@
 <template name="PatientCard">
   <div class="card">
     <div class="card-content">
-      <div class="center">
+      <!-- <div class="center">
         <img src="/patient.jpg" alt="" class="responsive-img circle">
-      </div>
+      </div> -->
       <span class="card-title">{{patient.first_name}} {{patient.last_name}}</span>
-      <ul class="collection">
+      <!-- <ul class="collection">
         <li class="collection-item">
           <span class="title">Age:</span>
           <p>29</p>
@@ -14,7 +14,7 @@
           <span class="title">Address:</span>
           <p>Borgmester Fischersvej 6, 7.tv, DK-2000 Frederiksberg</p>
         </li>
-      </ul>
+      </ul> -->
     </div>
     <div class="card-action">
       <div class="row">
@@ -29,9 +29,9 @@
               <i class="material-icons">menu</i>
             </a>
             <ul>
-              <li><a class="btn-floating red"><i class="material-icons">insert_chart</i></a></li>
-              <li><a class="btn-floating yellow darken-1"><i class="material-icons">format_quote</i></a></li>
-              <li><a class="btn-floating green"><i class="material-icons">publish</i></a></li>
+              <!-- <li><a class="btn-floating red"><i class="material-icons">insert_chart</i></a></li> -->
+              <li><a id="getDataFromIPFS" class="btn-floating red darken-1"><i class="material-icons">file_download</i></a></li>
+              <li><a id="publishToIPFS" class="btn-floating green"><i class="material-icons">publish</i></a></li>
               <li><a href="/upload/{{patient.patient_id}}" class="btn-floating blue"><i class="material-icons">attach_file</i></a></li>
             </ul>
           </div>

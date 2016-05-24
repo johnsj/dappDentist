@@ -20,17 +20,24 @@ class IPFS {
           } else {
 
             if (res.readable) {
-              let location = Meteor.absolutePath + "/archives/"+ patient_id +".zip";
+              let location = Meteor.absolutePath + "/archives/tmp/"+ patient_id +".zip";
               let write = fs.createWriteStream(location);
               res.pipe(write);
+              res.on('data',(chunk)=>{
+                // console.log("Got %d bytes of data", chunk.length);
+              })
               res.on('end',()=>{
-                write.end();
+                // console.log("Finished reading file");
                 resolve(location);
               })
+
+              write.on('error', (err)=>{
+                reject("Write:", err);
+              })
+              write.on('finish', ()=>{
+                // console.log("Finished writing file");
+              })
             }
-
-
-            // resolve(res);
           }
         });
       };
@@ -46,6 +53,7 @@ class IPFS {
           if (!fsErr) {
 
             ipfsObj.api.add(fsData, (err, data)=>{
+
               if(!err){
                 resolve(data);
               } else {
@@ -54,7 +62,7 @@ class IPFS {
             });
 
           } else {
-            reject(err);
+            reject(fsErr);
           };
         });
       }

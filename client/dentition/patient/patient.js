@@ -32,14 +32,28 @@ Template.PatientCard.events({
   'click .btn-complete-visit'(event, instance) {
     event.preventDefault();
     instance.state.set('visitComplete',!instance.state.get('visitComplete'));
-    // ipfs.cat("Qmc7CrwGJvRyCYZZU64aPawPj7CJ56vyBxdhxa38Dh1aKt", function(err, buffer) {
-    //   if (err) console.log(err);
-    //   console.log(buffer.toString());     // "Testing..."
-    // });
-    Meteor.call('testZip', function (err, res) {
+  },
+  'click #publishToIPFS'(event, instance){
+    event.preventDefault();
+    // console.log(instance);
+    Meteor.call('distributeToIPFS', FlowRouter.getParam('patient_id'),function(err, res){
       if (!err) {
-        console.log(res);
+        instance.state.set('visitComplete',!instance.state.get('visitComplete'));
       }
     });
+  },
+  'click #getDataFromIPFS'(event, instance){
+    Meteor.callPromise('getDataFromIPFS', FlowRouter.getParam('patient_id')).then((res)=>{
+      Meteor.callPromise('readFilesIntoDb', res).then((res)=>{
+        console.log(res);
+        window.location.reload()
+      });
+    });
+
+    // Meteor.call('getDataFromIPFS', FlowRouter.getParam('patient_id'), function (err, res) {
+    //   if (!err) {
+    //     console.log(res);
+    //   }
+    // });
   }
 });

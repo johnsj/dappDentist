@@ -1,18 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import jsZip from 'jszip';
 import fs from 'fs';
-import admzip from 'adm-zip';
 import {archiveLocation, uploadLocation} from '../const.js'
-
-export class Unzipper {
-  constructor(location){
-    this.zipInstance = new admzip(location);
-  }
-
-  extractAllTo(newLocation){
-    this.zipInstance.extractAllTo(newLocation, true);
-  }
-}
 
 export class zipWrapper {
   constructor(query) {
@@ -71,13 +60,20 @@ export class zipWrapper {
     let query = this.query;
     this.zipInstance.generateAsync({type:'nodebuffer'})
       .then(function (contents) {
-        fs.writeFile(archiveLocation + query + '.zip', contents, function (err) {
-          if(err){
-            console.log(err);
-          } else {
-            console.log('Zip file written to: ' + archiveLocation + query + '.zip');
-          }
-        });
+
+        let writer = fs.createWriteStream(archiveLocation + `${query}.zip`);
+
+        writer.write(contents)
+        writer.end();
+
+
+        // fs.writeFile(archiveLocation + query + '.zip', contents, function (err) {
+        //   if(err){
+        //     console.log(err);
+        //   } else {
+        //     console.log('Zip file written to: ' + archiveLocation + query + '.zip');
+        //   }
+        // });
       });
   }
 
