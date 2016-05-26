@@ -45,7 +45,7 @@ Template.addPatientModal.events({
 });
 
 Template.patientDirectoryListSingle.events({
-  'dblclick .patient_row'(event, instance){
+  'click .patient_row'(event, instance){
     let patient_id = this.patient_id;
     FlowRouter.go('/patientdirectory/'+patient_id);
   }
