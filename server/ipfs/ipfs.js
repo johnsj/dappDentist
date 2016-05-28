@@ -1,7 +1,7 @@
 import { IpfsConnector } from 'meteor/akasha:meteor-ipfs';
 import fs from 'fs';
 import path from 'path';
-import {archiveLocation, uploadLocation} from '../const.js';
+import {archiveLocation, archiveDownLocation, uploadLocation} from '../const.js';
 
 
 class IPFS {
@@ -20,7 +20,7 @@ class IPFS {
           } else {
 
             if (res.readable) {
-              let location = Meteor.absolutePath + "/archives/tmp/"+ patient_id +".zip";
+              let location = archiveDownLocation + patient_id +".zip";
               let write = fs.createWriteStream(location);
               res.pipe(write);
               res.on('data',(chunk)=>{
@@ -49,22 +49,34 @@ class IPFS {
       let ipfsObj = this.ipfsObj;
 
       if (this.started) {
-        fs.readFile(archiveLocation + `${query}.zip`,(fsErr, fsData)=>{
-          if (!fsErr) {
 
-            ipfsObj.api.add(fsData, (err, data)=>{
+        let fileContent = fs.readFileSync(archiveLocation + `${query}.zip`);
 
-              if(!err){
-                resolve(data);
-              } else {
-                reject(err);
-              }
-            });
-
+        ipfsObj.api.add(fileContent, (err, data)=>{
+          if(!err){
+            resolve(data);
           } else {
-            reject(fsErr);
-          };
+            reject(err);
+          }
         });
+
+        // fs.readFile(archiveLocation + `${query}.zip`,(fsErr, fsData)=>{
+        //   if (!fsErr) {
+        //     console.log(fsData);
+        //
+        //     ipfsObj.api.add(fsData, (err, data)=>{
+        //
+        //       if(!err){
+        //         resolve(data);
+        //       } else {
+        //         reject(err);
+        //       }
+        //     });
+        //
+        //   } else {
+        //     reject(fsErr);
+        //   };
+        // });
       }
     });
   }

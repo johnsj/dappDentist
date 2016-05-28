@@ -9,6 +9,7 @@ import path from 'path';
 import decompressZip from 'decompress-zip';
 import { zipWrapper } from './export/zipWrapper.js';
 import { journalDbContract } from './journalDbContract.js';
+import {archiveLocation, archiveDownLocation, uploadLocation} from './const.js';
 
 class blockchainConnector {
 
@@ -39,7 +40,7 @@ class blockchainConnector {
 
       let contract = new journalDbContract();
       let resultGet = contract.getJournal(patient_id);
-      let newLocation = Meteor.absolutePath + "/archives/tmp/" + patient_id + "/";
+      let newLocation = archiveDownLocation + patient_id + "~/";
 
       resultGet.then((hash)=>{
         // console.log("getting hash:", hash);
@@ -66,7 +67,7 @@ class blockchainConnector {
   readFilesIntoDb(patient_id){
     return new Promise((resolve, reject)=>{
 
-        let folderLocation = Meteor.absolutePath + "/archives/tmp/" + patient_id + "/";
+        let folderLocation = archiveDownLocation + patient_id + "~/";
 
         let importComments = (filelocation) => {
           console.info("Loaded comments file");
@@ -156,14 +157,17 @@ class blockchainConnector {
 
 Meteor.methods({
   distributeToIPFS: function (patient_id) {
-    if (web3.isAddress(patient_id)) {
-      let bc = new blockchainConnector();
-      bc.distributeToIPFS(patient_id).then((res)=>{
-        return res;
-      });
-    } else {
-      return false;
-    }
+    return new Promise((resolve, reject)=>{
+      if (web3.isAddress(patient_id)) {
+        let bc = new blockchainConnector();
+        bc.distributeToIPFS(patient_id).then((res)=>{
+          resolve(res);
+        })
+        .catch((err)=>{console.log(err)});
+      } else {
+        reject();
+      }
+    })
   },
   getDataFromIPFS: function (patient_id) {
     return new Promise((resolve, reject)=>{

@@ -1,6 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 import { ReactiveDict } from 'meteor/reactive-dict';
+import { Bert } from 'meteor/themeteorchef:bert';
 import { Patients } from '../../../collections/patients.js';
 
 import classnames from 'classnames';
@@ -36,10 +37,13 @@ Template.PatientCard.events({
   'click #publishToIPFS'(event, instance){
     event.preventDefault();
     // console.log(instance);
-    Meteor.call('distributeToIPFS', FlowRouter.getParam('patient_id'),function(err, res){
-      if (!err) {
-        instance.state.set('visitComplete',!instance.state.get('visitComplete'));
-      }
+    Meteor.callPromise('distributeToIPFS', FlowRouter.getParam('patient_id')).then((res)=>{
+      // instance.state.set('visitComplete',!instance.state.get('visitComplete'));
+      Bert.alert({
+        message: 'Files have uploaded to IPFS',
+        type: 'info',
+        style: 'growl-top-right'
+      });
     });
   },
   'click #getDataFromIPFS'(event, instance){
