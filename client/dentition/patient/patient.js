@@ -51,6 +51,7 @@ Template.PatientCard.events({
       Meteor.callPromise('readFilesIntoDb', res).then((res)=>{
         console.log(res);
         window.location.reload()
+        // FlowRouter.reload();
       });
     });
 

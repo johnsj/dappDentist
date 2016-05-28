@@ -7,6 +7,12 @@ Template.dentalFileList.onRendered(function () {
   $('.materialboxed').materialbox();
 })
 
+Template.fileUploadLayout.helpers({
+  patient_id(){
+    return FlowRouter.getParam('patient_id');
+  }
+});
+
 Template.dentalFileList.helpers({
   imageList(){
     let patient_id = FlowRouter.getParam('patient_id');

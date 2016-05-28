@@ -13,7 +13,7 @@ Template.dentition.onRendered(function () {
     teeth.forEach(function (tooth) {
       document.getElementById(tooth.tooth).classList.add(tooth.status);
     });
-  }, 100);
+  }, 500);
 });
 
 
