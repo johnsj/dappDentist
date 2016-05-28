@@ -14,6 +14,11 @@ Meteor.startup(()=>{
       fs.mkdirSync(archiveDownLocation);
     }
   });
+  fs.stat(uploadLocation,(err, stat) => {
+    if (err) {
+      fs.mkdirSync(uploadLocation);
+    }
+  });
 
 
   if(typeof web3 === 'undefined') {
