@@ -11,6 +11,7 @@ class IPFS {
   }
 
   retrieveData(patient_id, ipfshash){
+    // console.log('Retrieving IPFS hash:', ipfshash);
     return new Promise((resolve, reject)=>{
       let ipfsObj = this.ipfsObj;
       if (this.started) {

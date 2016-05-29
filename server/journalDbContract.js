@@ -17,11 +17,14 @@ export class journalDbContract {
 
   getJournal(patient){
     return new Promise((resolve, reject) => {
+      console.log("Attempting to get records for patient:", patient);
       this.contractInstance.getJournal.call(patient, (err, res) => {
         if (err) {
           reject(err);
         } else {
-          // resolve( res );
+          if (res == "0x") {
+            reject("No IPFS Hash found in contract");
+          }
           resolve( web3.toUtf8( res ) );
         }
       });
@@ -30,10 +33,13 @@ export class journalDbContract {
 
   updateJournal(patient, hash){
     return new Promise((resolve, reject) => {
+      console.log("Attempting to upload patient journal:", patient, hash);
       this.contractInstance.updateJournal.sendTransaction(patient, hash, {gas: 100000}, (err, res) => {
         if (err) {
           reject(err);
+          // console.log("Recieved err from journal upload:", err);
         } else {
+          // console.log("Recieved response from journal upload:", res);
           resolve(res)
         }
       });

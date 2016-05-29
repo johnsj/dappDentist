@@ -1,3 +1,5 @@
-export const archiveLocation = Meteor.absolutePath + '/public/archives~/';
-export const archiveDownLocation = Meteor.absolutePath + '/public/archives~/tmp~/';
+import path from 'path';
+
+export const archiveLocation = path.resolve(Meteor.absolutePath + '/../archives~/');
+export const archiveDownLocation = path.resolve(Meteor.absolutePath + '/../archives~/tmp~/');
 export const uploadLocation = Meteor.absolutePath + '/uploads/';

@@ -48,7 +48,7 @@ Template.PatientCard.events({
   },
   'click #getDataFromIPFS'(event, instance){
     Meteor.callPromise('getDataFromIPFS', FlowRouter.getParam('patient_id')).then((res)=>{
-      Meteor.callPromise('readFilesIntoDb', res).then((res)=>{
+      Meteor.callPromise('readFilesIntoDb', FlowRouter.getParam('patient_id')).then((res)=>{
         console.log(res);
         window.location.reload()
         // FlowRouter.reload();
