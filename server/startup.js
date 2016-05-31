@@ -1,6 +1,7 @@
 import { Web3 } from 'meteor/ethereum:web3';
 import fs from 'fs';
 import {archiveLocation, archiveDownLocation, uploadLocation} from './const.js';
+import { journalDbContract } from './journalDbContract.js';
 // import RandomJS from 'random-js';
 
 Meteor.startup(()=>{

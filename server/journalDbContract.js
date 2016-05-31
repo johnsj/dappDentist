@@ -12,7 +12,7 @@ export class journalDbContract {
     this.contract = web3.eth.contract(this.contractABI);
     this.contractInstance = this.contract.at(Meteor.settings.private.contractAddress);
     web3.eth.defaultAccount = web3.eth.coinbase;
-
+    this.watch();
   }
 
   getJournal(patient){
@@ -46,13 +46,22 @@ export class journalDbContract {
     });
   }
 
-  // watch(){
-  //   let filter = this.contractInstance.journalUpdated({},{fromBlock:0, toBlock:"latest"});
-  //   console.log(filter);
-  //   filter.get((err, res)=>{
-  //     if (!err) {
-  //       console.log(res);
-  //     }
-  //   });
-  // }
+  watch(){
+
+    let event = this.contractInstance.journalUpdated({}, {fromBlock:0, toBlock:'latest'}).watch((err, res)=>{
+      if (!err) {
+        console.log("Recieved event from Contract -> journalUpdated:", res);
+      } else {
+        console.log("Contract event error:", err);
+      }
+    });
+
+    // let filter = this.contractInstance.journalUpdated({},{fromBlock:0, toBlock:"latest"});
+    // console.log(filter);
+    // filter.get((err, res)=>{
+    //   if (!err) {
+    //     console.log(res);
+    //   }
+    // });
+  }
 }

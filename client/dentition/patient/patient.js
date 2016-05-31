@@ -9,13 +9,23 @@ import classnames from 'classnames';
 Template.PatientCard.onCreated(function() {
   this.state = new ReactiveDict();
   this.state.set('visitComplete', false);
+  this.state.set('isFetchingJournal', false);
 });
 
 Template.PatientCard.helpers({
   isVisitComplete(){
     return Template.instance().state.get('visitComplete');
   },
+  isFetchingJournal(){
+    return Tempate.instance().state.get('isFetchingJournal');
+  },
+  disabledClass(){
+    let classname = classnames({
+      disabled: Tempate.instance().state.get('isFetchingJournal')
+    });
 
+    return classname;
+  },
   visitCSSClass(){
     let classname = classnames({
       red: !Template.instance().state.get('visitComplete'),
@@ -47,9 +57,16 @@ Template.PatientCard.events({
     });
   },
   'click #getDataFromIPFS'(event, instance){
+    instance.state.set('isFetchingJournal', true);
+    Bert.alert({
+      message: 'Fetching journal from blockchain and IPFS',
+      type: 'danger',
+      style: 'growl-top-right'
+    });
     Meteor.callPromise('getDataFromIPFS', FlowRouter.getParam('patient_id')).then((res)=>{
       Meteor.callPromise('readFilesIntoDb', FlowRouter.getParam('patient_id')).then((res)=>{
         console.log(res);
+        instance.state.set('isFetchingJournal', false);
         window.location.reload()
         // FlowRouter.reload();
       });

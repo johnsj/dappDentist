@@ -25,7 +25,8 @@
       <div class="row">
         <div class="col s12" style="padding-top: 30px;">
           <div class="right horizontal">
-            <a id="getDataFromIPFS" class="btn-floating red darken-1"><i class="material-icons">file_download</i></a>
+            <!-- <a id="getDataFromIPFS" class="btn-floating red darken-1"><i class="material-icons">file_download</i></a> -->
+            <button disabled="{{isFetchingJournal}}" id="getDataFromIPFS" class="btn-floating red darken-1 {{disabledClass}}"><i class="material-icons">file_download</i></button>
             <a id="publishToIPFS" class="btn-floating green"><i class="material-icons">publish</i></a>
             <a href="/upload/{{patient.patient_id}}" class="btn-floating blue"><i class="material-icons">attach_file</i></a>
             <!-- <a class="btn-floating btn-large red">
