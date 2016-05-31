@@ -17,11 +17,11 @@ Template.PatientCard.helpers({
     return Template.instance().state.get('visitComplete');
   },
   isFetchingJournal(){
-    return Tempate.instance().state.get('isFetchingJournal');
+    return Template.instance().state.get('isFetchingJournal');
   },
   disabledClass(){
     let classname = classnames({
-      disabled: Tempate.instance().state.get('isFetchingJournal')
+      disabled: Template.instance().state.get('isFetchingJournal')
     });
 
     return classname;
