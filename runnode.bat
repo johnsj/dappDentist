@@ -1,0 +1,1 @@
+geth --datadir="./networkid1234567890" --genesis="./genesis.json" --networkid="1234567890"  --identity="ComputerIdentityOnNetwork" --port="30303" --rpc --rpccorsdomain="http://localhost:3000" --unlock 0 console

@@ -1,0 +1,1 @@
+geth --datadir="~/Documents/Ethereum/networkid/1234567890" --genesis ~/Documents/Ethereum/networkid/genesis.json --networkid 1234567890 --identity "ComputerIdentityOnNetwork" --unlock 0 --shh --rpc --rpccorsdomain "http://localhost:3000" --ipcpath /Users/your-user/Library/Ethereum/geth.ipc
